@@ -35,15 +35,12 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
 		bool found = false; 
 		for (int p = 0; p < P; p++) 
 		{ 
-	
 			if (finish[p] == 0) 
 			{ 
-	 
 				int j; 
 				for (j = 0; j < R; j++) 
 					if (need[p][j] > work[j]) 
 						break; 
-
 				if (j == R) 
 				{ 
 			
@@ -58,24 +55,19 @@ bool isSafe(int processes[], int avail[], int maxm[][R],
 				} 
 			} 
 		} 
-
-
 		if (found == false) 
 		{ 
 			cout << "System is not in safe state"; 
 			return false; 
 		} 
 	} 
-
-
 	cout << "System is in safe state.\nSafe"
 		" sequence is: "; 
 	for (int i = 0; i < P ; i++) 
 		cout << safeSeq[i] << " "; 
 
 	return true; 
-} 
-
+}
 int main() 
 { 
 	int processes[] = {0, 1, 2, 3, 4}; 
@@ -93,6 +85,6 @@ int main()
 					{0, 0, 2}}; 
 
 	isSafe(processes, avail, maxm, allot); 
-    
+
 	return 0; 
 } 
