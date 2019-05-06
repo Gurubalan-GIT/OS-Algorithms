@@ -19,13 +19,15 @@ int main(){
     cout<<"Enter the number of frames:\n";
     cin>>nf;
 
-    //Initialize frame arrays
+    //Initialize frame arrays, these signify the unallocated frames basically
     for(int i=0;i<nf;i++){
         frames[i]=-1;
     }
 
+    //Here I'm traversing over the pages basically and assigning frames to each page, we will traverse into the frames array within this loop
     for(int i=0;i<n;i++){
         cout<<"\nFor "<<pages[i]<<" : ";
+        //Checking for page hit if any frame is equal to the page
          for(int x=0;x<nf;x++){
             if (frames[nf]==pages[n])
             {
@@ -33,16 +35,19 @@ int main(){
                 break;
             } 
         }
-
+        //Now if no hit, then we have to replace and page fault becomes incremented 
         if(isHit==0){
 
             for(j=0;j<nf-1;j++){
+                //Here I'm copying the next array element's value to the present one, so the whole srray moves upwards 
                 frames[j]=frames[j+1];
             }
-            frames[j]=pages[i];
+            frames[j]=pages[i];//Remember that we terminated in nf-1, so after the increment of the last loop, we will have nf stored in J
+            //Hence we can assign that position as the new value. When another value comes, this moves upwards the array. 
             pfcount++;
             for(int k=0;k<nf;k++){
                 if(frames[k]!=-1){
+                    //Printing only the changed/uptaded values
                     cout<<frames[k]<<" ";
                 }
             }
